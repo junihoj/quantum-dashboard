@@ -1,5 +1,6 @@
 import React from "react";
 import IconPathWrapper from "./icon-path-wrapper";
+import { IconProps } from "@/types";
 
 const LogoIcon = (props: IconProps) => {
   return (

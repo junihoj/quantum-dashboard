@@ -39,12 +39,21 @@
   --color-card: var(--card);
 
   /* colors system */
+  --color-system-background:#FBFBFB;
   --color-system-primary: #19A752;
-  --color-system-grey-3:#434343;
-  --color-system-grey-10:#F8F8F8;
-  --color-system-grey-6:#DDE6F0;
+  --color-system-primary-disabled:#B8E0C8;
+  --color-system-green-5:#E4F4DC;
   --color-system-grey-1:#211F1F;
+  --color-system-grey-3:#434343;
+  --color-system-grey-6:#DDE6F0;
+  --color-system-grey-8:#CFCFCF;
+  --color-system-grey-9:#ADACAC;
+  --color-system-grey-10:#F8F8F8;
 
+  --color-system-green-1:#329902;
+  --color-system-green-6:#F8FFF4;
+  --color-system-red-2:#DF0000;
+  --color-system-red-6:#FFF1F1;
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
@@ -138,6 +147,12 @@
 @utility bodyText-semiBold{
   font-weight: 600;
   font-size: 16px;
+  line-height: 100%;
+  letter-spacing: 0%;
+}
+@utility bodyText-Bold{
+  font-weight: 700;
+  font-size: 20px;
   line-height: 100%;
   letter-spacing: 0%;
 }

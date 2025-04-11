@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Libre_Franklin } from "next/font/google";
 import "./globals.css";
+import { Toaster } from "sonner";
 
 const libreFranklin = Libre_Franklin({
   variable: "--font-libre-franklin",
@@ -21,6 +22,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${libreFranklin.className}  antialiased`}>
         {children}
+        <Toaster />
       </body>
     </html>
   );

@@ -6,7 +6,7 @@ import SupportNavItem from "./support-nav-item";
 
 const SideNav = () => {
   return (
-    <aside className="h-full overflow-y-auto px-4 pt-8 flex flex-col w-[16.5%]">
+    <aside className="h-full overflow-y-auto px-4 pt-8 flex flex-col w-[16.5%] relative">
       <div>
         <Link href="/">Logo</Link>
 
@@ -35,6 +35,10 @@ const SideNav = () => {
             />
           ))}
         </div>
+      </div>
+
+      <div className="sticky bottom-0">
+        <SideNavMenuItem icon="logout" label="Logout" />
       </div>
     </aside>
   );

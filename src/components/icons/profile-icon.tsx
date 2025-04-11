@@ -1,5 +1,6 @@
 import React from "react";
 import IconPathWrapper from "./icon-path-wrapper";
+import { IconProps } from "@/types";
 
 export const ProfileIcon = ({ strokeWidth = 1.5, ...rest }: IconProps) => {
   return (

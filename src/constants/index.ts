@@ -1,3 +1,5 @@
+export const apiUrl = process.env.NEXT_PUBLIC_API_URL ?? "/api";
+
 export const dashboardSideNavMenu = [
   { label: "Dashboard", path: "/home", icon: "home" },
   {

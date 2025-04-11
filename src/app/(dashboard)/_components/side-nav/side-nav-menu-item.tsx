@@ -7,10 +7,11 @@ import { usePathname, useRouter } from "next/navigation";
 type Props = {
   label: string;
   icon: string;
-  path: string;
+  path?: string;
+  onClick?: () => void;
 };
 
-const SideNavMenuItem = ({ icon, label, path }: Props) => {
+const SideNavMenuItem = ({ icon, label, path, onClick }: Props) => {
   const pathname = usePathname();
   console.log("pathname", pathname);
   const router = useRouter();
@@ -26,7 +27,13 @@ const SideNavMenuItem = ({ icon, label, path }: Props) => {
         }
       )}
       onClick={() => {
-        router.push(path);
+        if (onClick) {
+          onClick();
+          return;
+        }
+        if (path) {
+          router.push(path);
+        }
       }}
     >
       <SideNavIcon icon={icon} isActive={isActive} />
