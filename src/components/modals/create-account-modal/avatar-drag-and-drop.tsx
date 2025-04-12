@@ -10,14 +10,16 @@ type Props = {
 const AvatarDragAndDrop = ({ setAvatar }: Props) => {
   const onDrop = useCallback((acceptedFiles: any) => {
     // Do something with the files
+    console.log("accepted files", acceptedFiles);
   }, []);
-  const { getRootProps, getInputProps, isDragActive } = useDropzone({
-    onDrop,
-    accept: {
-      "image/*": [],
-    },
-    multiple: false,
-  });
+  const { getRootProps, getInputProps, isDragActive, inputRef, open } =
+    useDropzone({
+      onDrop,
+      accept: {
+        "image/*": [],
+      },
+      multiple: false,
+    });
   return (
     <div className="flex flex-col gap-y-4">
       <div {...getRootProps({ className: "flex justify-center" })}>
@@ -45,6 +47,9 @@ const AvatarDragAndDrop = ({ setAvatar }: Props) => {
             "font-normal text-system-primary leading-[100%] underline text-sm",
             "hover:text-system-primary/90"
           )}
+          onClick={() => {
+            open();
+          }}
         >
           Choose an image
         </Button>

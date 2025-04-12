@@ -1,36 +1,109 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+## 📋 <a name="table">Table of Contents</a>
 
-## Getting Started
+1. 🤖 [Introduction](#introduction)
+2. 💡 [Developer Note](#developer-note)
+3. ⚙️ [Tech Stack](#tech-stack)
+4. 📁 [Project Structure](#project-structure)
+5. 🤸 [Quick Start](#quick-start)
+6. 🔗 [Assets & Snippets](#links)
+7. 🧪 [API Endpoints](#api-endpoints)
+8. 🚀 [More](#more)
 
-First, run the development server:
+## <a name="introduction">🤖 Introduction</a>
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+This is a full-stack application built as part of the QuantumTech Full Stack Developer interview process. The goal was to implement a design provided via Figma, and expose API endpoints to manage account holder details using a PostgreSQL database.
+
+---
+
+## <a name="developer-note">💡 Developer Note</a>
+
+While this project uses Prisma for convenience and type safety, I’m also very comfortable working directly with PostgreSQL using the lower-level pg library. Here's an example of a raw SQL query I might write:
+
+```js
+const result = await pool.query(
+  "INSERT INTO account (first_name, last_name, occupation) VALUES ($1, $2, $3) RETURNING *",
+  [firstName, lastName, occupation]
+);
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## <a name="tech-stack">⚙️ Tech Stack</a>
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **Next.js 15+ (App Router)**
+- **React 19**
+- **PostgreSQL**
+- **Prisma** (ORM)
+- **Zod** (for request validation)
+- **Tailwind CSS** (for styling, if UI is included)
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## <a name="quick-start">🤸 Quick Start</a>
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Follow these steps to set up the project locally on your machine.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+**Prerequisites / Project Requirements**
 
-## Deploy on Vercel
+Make sure you have the following installed on your machine:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- [Git](https://git-scm.com/)
+- [Node.js](https://nodejs.org/en)
+- [npm](https://www.npmjs.com/) (Node Package Manager)
+- Build RESTful API endpoints with nextjs:
+  - `POST /api/accounts` – Create account
+  - `PUT /api/accounts/:id` – Update account
+  - `DELETE /api/accounts/:id` – Delete account
+- Validate requests using **Zod**
+- Use **Prisma** for database access and schema modeling
+- make sure you have postgres installed locally or you have access to an online postgres database
+- Implement UI based on [Figma design](<https://www.figma.com/proto/hOLRAo0MWOShYpKVRCKVaA/Design--2-(Copy)?node-id=1-606&p=f&t=CAnfVeGkOkzSdzko-0&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1>)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+**Cloning the Repository**
+
+```bash
+git clone https://github.com/junihoj/quantum-dashboard.git
+cd quantum-dashboard
+```
+
+**Installation**
+
+Install the project dependencies using npm:
+
+```bash
+npm install
+```
+
+**Set Up Environment Variables**
+
+Create a new file named `.env` in the root of your project and add the following content:
+
+```env
+DATABASE_URL=postgresql://user:password@host:port/database-name
+NEXT_PUBLIC_API_URL="/api"
+```
+
+Replace the placeholder value for the DATABASE_URL with your actual **(POSTGRES URL)** credentials.
+
+---
+
+## <a name="api-endpoints">🧪 API ENDPOINTS</a>
+
+| Method | Endpoint            | Description       |
+| ------ | ------------------- | ----------------- |
+| POST   | `/api/accounts`     | Create an account |
+| PUT    | `/api/accounts/:id` | Update an account |
+| DELETE | `/api/accounts/:id` | Delete an account |
+
+### ✅ Payload Example
+
+```json
+{
+  "firstName": "John",
+  "lastName": "Doe",
+  "occupation": "ENGINEER",
+  "avatar": "base64;image...."
+}
+```
+
+---

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -12,6 +12,7 @@ import { apiService } from "@/lib/apiService";
 import CustomToast from "@/components/globals/custom-toast";
 import { toast } from "sonner";
 import { TOccupation } from "@/types";
+import Image from "next/image";
 
 const AccountFormSchema = z.object({
   firstName: z.string().min(1, "First Name is required"),
@@ -46,6 +47,7 @@ const AccountForm = ({
   occupation,
   setOpen,
 }: Props) => {
+  const [preview, setPreview] = useState("");
   const form = useForm<z.infer<typeof AccountFormSchema>>({
     resolver: zodResolver(AccountFormSchema),
     defaultValues: {
@@ -97,7 +99,16 @@ const AccountForm = ({
         className="flex flex-col bg-white gap-y-10 overflow-y-auto px-8 py-6"
       >
         {/* <CustomToast id="id" message="" success={false} /> */}
-        <AvatarDragAndDrop />
+        {preview ? (
+          <Image src={preview} alt="preview" width={100} height={100} />
+        ) : (
+          <AvatarDragAndDrop
+            setAvatar={(avatar: string) => {
+              form.setValue("avatar", avatar);
+              setPreview(avatar);
+            }}
+          />
+        )}
         <div className="flex flex-col gap-y-4">
           <CustomField
             className="flex-1 w-full"

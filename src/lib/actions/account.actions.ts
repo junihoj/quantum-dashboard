@@ -24,3 +24,7 @@ export async function deleteAccount(id: string) {
     where: { id },
   });
 }
+
+export async function getAllAccounts() {
+  return db.account.findMany();
+}

@@ -1,11 +1,10 @@
 import { NextResponse } from "next/server";
 import db from "@/lib/db";
 import { accountSchema } from "@/lib/validation";
-import { createAccount } from "@/lib/actions/account.actions";
+import { createAccount, getAllAccounts } from "@/lib/actions/account.actions";
 
 export async function POST(req: Request) {
   try {
-    console.log("here", "create account");
     const body = await req.json();
     const validated = accountSchema.parse(body);
 
@@ -23,4 +22,15 @@ export async function POST(req: Request) {
       { status: 400 }
     );
   }
+}
+
+export async function GET() {
+  try {
+    const accounts = getAllAccounts();
+
+    return NextResponse.json(
+      { success: true, data: accounts },
+      { status: 200 }
+    );
+  } catch (err) {}
 }
