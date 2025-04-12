@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Libre_Franklin } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "sonner";
+import TanstackQueryProvider from "@/providers/tanstack-query-provider";
 
 const libreFranklin = Libre_Franklin({
   variable: "--font-libre-franklin",
@@ -21,7 +22,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${libreFranklin.className}  antialiased`}>
-        {children}
+        <TanstackQueryProvider>{children}</TanstackQueryProvider>
         <Toaster />
       </body>
     </html>

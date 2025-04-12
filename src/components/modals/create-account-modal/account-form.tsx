@@ -38,6 +38,7 @@ type Props = {
   occupation?: string;
   avatar?: string;
   setOpen: (val: boolean) => void;
+  id?: string;
 };
 
 const AccountForm = ({
@@ -46,6 +47,7 @@ const AccountForm = ({
   avatar,
   occupation,
   setOpen,
+  id,
 }: Props) => {
   const [preview, setPreview] = useState("");
   const form = useForm<z.infer<typeof AccountFormSchema>>({
@@ -53,25 +55,37 @@ const AccountForm = ({
     defaultValues: {
       firstName,
       lastName,
-      avatar,
+      avatar: avatar ?? "",
       occupation,
     },
   });
 
   const onSubmit = async (values: z.infer<typeof AccountFormSchema>) => {
     try {
-      const res = await apiService({
-        url: "/accounts",
-        method: "post",
-        data: values,
-      });
+      console.log("id here", id);
+      if (id) {
+        // if id which mean it is an update
+        await apiService({
+          url: `/accounts/${id}`,
+          method: "put",
+          data: { ...values, avatar: avatar ?? "" },
+        });
+      } else {
+        await apiService({
+          url: "/accounts",
+          method: "post",
+          data: values,
+        });
+      }
 
       form.reset({ avatar: "", firstName: "", lastName: "", occupation: "" });
       toast.custom((id) => {
         return (
           <CustomToast
             id={id}
-            message="Account holder details created successfully."
+            message={`Account holder details ${
+              id ? "updated" : "created"
+            } successfully.`}
           />
         );
       });
@@ -92,6 +106,8 @@ const AccountForm = ({
       );
     }
   };
+  console.log(form.formState.errors);
+  console.log("iddfdf", id);
   return (
     <Form {...form}>
       <form

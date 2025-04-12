@@ -3,12 +3,15 @@ import Link from "next/link";
 import { dashboardSideNavMenu, helpAndSupportNavItems } from "@/constants";
 import SideNavMenuItem from "./side-nav-menu-item";
 import SupportNavItem from "./support-nav-item";
+import Logo from "@public/assets/icons/logo.svg";
 
 const SideNav = () => {
   return (
     <aside className="h-full overflow-y-auto px-4 pt-8 flex flex-col w-[16.5%] relative">
       <div>
-        <Link href="/">Logo</Link>
+        <Link href="/">
+          <Logo />
+        </Link>
 
         {/* top nav links */}
         <nav className="flex flex-col gap-1">

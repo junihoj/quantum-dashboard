@@ -9,8 +9,15 @@ import {
 import { Button } from "@/components/ui/button";
 import { XIcon } from "lucide-react";
 import AccountForm from "./account-form";
+import { TAccount } from "@/types";
+import { cn } from "@/lib/utils";
 
-const CreateAccountModal = () => {
+type Props = {
+  data?: TAccount;
+  className?: string;
+  buttonText?: string;
+};
+const CreateAccountModal = ({ data, className, buttonText }: Props) => {
   const [open, setOpen] = useState(false);
   return (
     <Dialog open={open}>
@@ -21,10 +28,10 @@ const CreateAccountModal = () => {
           e.preventDefault();
           setOpen(true);
         }}
-        className="cursor-pointer"
+        className={cn("cursor-pointer", className)}
       >
         <Button className="bodyText-regular" variant="fill">
-          Add an account holder
+          {buttonText ?? "Add an account holder"}
         </Button>
       </DialogTrigger>
 
@@ -39,7 +46,14 @@ const CreateAccountModal = () => {
               Fill the details below in order to add an account holder.
             </p>
           </header>
-          <AccountForm setOpen={setOpen} />
+          <AccountForm
+            setOpen={setOpen}
+            avatar={data?.avatar}
+            firstName={data?.firstName}
+            lastName={data?.lastName}
+            occupation={data?.occupation}
+            id={data?.id}
+          />
         </div>
         <DialogClose
           onClick={(e) => {

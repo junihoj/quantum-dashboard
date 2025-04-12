@@ -85,6 +85,24 @@ NEXT_PUBLIC_API_URL="/api"
 
 Replace the placeholder value for the DATABASE_URL with your actual **(POSTGRES URL)** credentials.
 
+**Set up the database:**
+
+```bash
+npx prisma db push
+```
+
+**OR**
+
+```bash
+npx prisma migrate dev --name init
+```
+
+**Run the App**
+
+```bash
+npm run dev
+```
+
 ---
 
 ## <a name="api-endpoints">🧪 API ENDPOINTS</a>
@@ -92,6 +110,7 @@ Replace the placeholder value for the DATABASE_URL with your actual **(POSTGRES 
 | Method | Endpoint            | Description       |
 | ------ | ------------------- | ----------------- |
 | POST   | `/api/accounts`     | Create an account |
+| GET    | `/api/accounts`     | get All accounts  |
 | PUT    | `/api/accounts/:id` | Update an account |
 | DELETE | `/api/accounts/:id` | Delete an account |
 

@@ -29,3 +29,13 @@ export type TOccupation =
   | "DOCTOR"
   | "TEACHER"
   | "OTHER";
+
+export type TAccount = {
+  id: string;
+  firstName: string;
+  lastName: string;
+  avatar?: string;
+  occupation: string;
+  createdAt: string | Date;
+  updatedAt: string | Date;
+};
