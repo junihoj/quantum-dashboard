@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import db from "@/lib/db";
+
 import { accountSchema } from "@/lib/validation";
 import { createAccount, getAllAccounts } from "@/lib/actions/account.actions";
 
@@ -7,7 +7,7 @@ export async function POST(req: Request) {
   try {
     const body = await req.json();
     const validated = accountSchema.parse(body);
-
+    console.log("VALIDATED DATA", validated);
     // const account = await db.account.create({
     //   data: validated,
     // });

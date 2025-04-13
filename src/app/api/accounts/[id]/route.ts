@@ -5,13 +5,14 @@ import { NextResponse } from "next/server";
 
 export async function PUT(
   req: Request,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
+  // { params }: { params: { id: string } }
   try {
     const body = await req.json();
     const validated = accountSchema.parse(body);
-
-    const updated = await updateAccount({ id: params.id, data: validated });
+    const { id } = await params;
+    const updated = await updateAccount({ id, data: validated });
 
     return NextResponse.json({ success: true, data: updated }, { status: 200 });
   } catch (error: any) {
@@ -21,10 +22,12 @@ export async function PUT(
 
 export async function DELETE(
   req: Request,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    await deleteAccount(params.id);
+    // { params }: { params: { id: string } }
+    const { id } = await params;
+    await deleteAccount(id);
 
     return new Response(null, { status: 204 });
   } catch (error: any) {

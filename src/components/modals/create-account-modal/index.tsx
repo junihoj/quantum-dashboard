@@ -30,8 +30,8 @@ const CreateAccountModal = ({ data, className, buttonText }: Props) => {
         }}
         className={cn("cursor-pointer", className)}
       >
-        <Button className="bodyText-regular" variant="fill">
-          {buttonText ?? "Add an account holder"}
+        <Button className="bodyText-regular max-[600]:text-xs" variant="fill">
+          {buttonText ?? "Add an account"}
         </Button>
       </DialogTrigger>
 

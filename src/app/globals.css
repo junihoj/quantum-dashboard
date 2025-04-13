@@ -52,6 +52,7 @@
 
   --color-system-green-1:#329902;
   --color-system-green-6:#F8FFF4;
+  --color-system-red-1:#BF0202;
   --color-system-red-2:#DF0000;
   --color-system-red-6:#FFF1F1;
   --radius-sm: calc(var(--radius) - 4px);

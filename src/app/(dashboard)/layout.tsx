@@ -11,9 +11,9 @@ const DashboardLayout = ({ children }: Props) => {
       <SideNav />
 
       {/* right (topnav and children*/}
-      <div className="flex flex-col flex-1">
+      <div className="flex flex-col flex-1 w-full">
         <TopBar />
-        <main className="flex-1">{children}</main>
+        <main className="flex-1 w-full">{children}</main>
       </div>
     </div>
   );

@@ -13,6 +13,8 @@ import CustomToast from "@/components/globals/custom-toast";
 import { toast } from "sonner";
 import { TOccupation } from "@/types";
 import Image from "next/image";
+import { useQueryClient } from "@tanstack/react-query";
+import PencilIcon from "@/components/icons/pencil-icon";
 
 const AccountFormSchema = z.object({
   firstName: z.string().min(1, "First Name is required"),
@@ -50,6 +52,7 @@ const AccountForm = ({
   id,
 }: Props) => {
   const [preview, setPreview] = useState("");
+  const queryClient = useQueryClient();
   const form = useForm<z.infer<typeof AccountFormSchema>>({
     resolver: zodResolver(AccountFormSchema),
     defaultValues: {
@@ -79,6 +82,7 @@ const AccountForm = ({
       }
 
       form.reset({ avatar: "", firstName: "", lastName: "", occupation: "" });
+      queryClient.invalidateQueries({ queryKey: ["accounts"] });
       toast.custom((id) => {
         return (
           <CustomToast
@@ -106,8 +110,8 @@ const AccountForm = ({
       );
     }
   };
-  console.log(form.formState.errors);
-  console.log("iddfdf", id);
+  // console.log(form.formState.errors);
+
   return (
     <Form {...form}>
       <form
@@ -116,7 +120,26 @@ const AccountForm = ({
       >
         {/* <CustomToast id="id" message="" success={false} /> */}
         {preview ? (
-          <Image src={preview} alt="preview" width={100} height={100} />
+          <div className="flex justify-center relative">
+            <Image
+              src={preview}
+              alt="preview"
+              width={100}
+              height={100}
+              className="w-24 h-24 rounded-[100%]"
+            />
+            <Button
+              className="absolute mx-auto left-0 -bottom-8 w-fit bg-system-red-1 right-0 "
+              //  -bottom-3 left-0 right-0 m-auto w-fit p-[.35rem] rounded-full bg-gray-800 hover:bg-gray-700 border border-gray-600
+              title="Change photo"
+              onClick={() => {
+                setPreview("");
+              }}
+              type="button"
+            >
+              Remove image
+            </Button>
+          </div>
         ) : (
           <AvatarDragAndDrop
             setAvatar={(avatar: string) => {

@@ -9,22 +9,31 @@ type Props = {
   icon: string;
   path?: string;
   onClick?: () => void;
+  setOpen?: (val: boolean) => void;
+  className?: string;
 };
 
-const SideNavMenuItem = ({ icon, label, path, onClick }: Props) => {
+const SideNavMenuItem = ({
+  icon,
+  label,
+  path,
+  onClick,
+  className,
+  setOpen,
+}: Props) => {
   const pathname = usePathname();
-  console.log("pathname", pathname);
   const router = useRouter();
   const isActive = pathname == path;
 
   return (
     <div
       className={cn(
-        "flex rounded-xl items-center hover:bg-system-primary p-3 gap-x-1.5 cursor-pointer group/navItem",
+        "flex rounded-xl items-center hover:bg-system-primary p-4 gap-x-1.5 cursor-pointer group/navItem",
         "bodyText-regular hover:text-white",
         {
           "bg-system-primary text-white": isActive,
-        }
+        },
+        className
       )}
       onClick={() => {
         if (onClick) {
@@ -33,6 +42,7 @@ const SideNavMenuItem = ({ icon, label, path, onClick }: Props) => {
         }
         if (path) {
           router.push(path);
+          if (setOpen) setOpen(false);
         }
       }}
     >

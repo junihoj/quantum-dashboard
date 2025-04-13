@@ -27,7 +27,7 @@ model Account {
   id         String     @id @default(uuid())
   firstName  String
   lastName   String
-  avatar     String?
+  avatar     String?    @db.Text
   occupation Occupation
   createdAt  DateTime   @default(now())
   updatedAt  DateTime   @updatedAt

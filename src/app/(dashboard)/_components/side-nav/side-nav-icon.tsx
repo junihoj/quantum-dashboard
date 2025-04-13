@@ -2,6 +2,7 @@ import React from "react";
 import { cn } from "@/lib/utils";
 import { HomeIcon, ProfileIcon } from "@/components/icons";
 import { Mail, Settings } from "lucide-react";
+import LogooutIcon from "@public/assets/icons/logout.svg";
 type Props = {
   icon: string;
   isActive: boolean;
@@ -47,7 +48,10 @@ const SideNavIcon = ({ icon, isActive }: Props) => {
       return <span>?</span>;
 
     case "contact":
-      return <Mail className="w-3 h-3" />;
+      return <Mail className="w-5 h-4 strok-[1.5]" />;
+
+    case "logout":
+      return <LogooutIcon />;
   }
 
   return null;

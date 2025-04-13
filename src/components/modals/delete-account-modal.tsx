@@ -6,12 +6,14 @@ import { CircleAlert } from "lucide-react";
 import { apiService } from "@/lib/apiService";
 import { toast } from "sonner";
 import CustomToast from "../globals/custom-toast";
+import { useQueryClient } from "@tanstack/react-query";
 
 type Props = {
   id: string;
   name: string;
 };
 const DeleteAccountModal = ({ id, name }: Props) => {
+  const queryClient = useQueryClient();
   const [open, setOpen] = useState(false);
 
   const handleDeleteAccount = async () => {
@@ -20,6 +22,7 @@ const DeleteAccountModal = ({ id, name }: Props) => {
         url: `/accounts/${id}`,
         method: "delete",
       });
+      queryClient.invalidateQueries({ queryKey: ["accounts"] });
       toast.custom((id) => {
         return (
           <CustomToast
@@ -55,14 +58,14 @@ const DeleteAccountModal = ({ id, name }: Props) => {
         <DialogTitle className="sr-only">Delete Appointment Modal</DialogTitle>
 
         <div className="flex flex-col gap-y-4 items-center">
-          <CircleAlert />
+          <CircleAlert className="w-8 h-8 stroke-system-red-2" />
           <div className="flex flex-col gap-y-1 items-center">
             <h2 className="text-center font-bold text-[1.125rem] text-[#181D27]">
               Delete
             </h2>
             <p className="text-center text-[#535862] font-medium text-sm tracking-normal">
-              Are you sure you want to delete this account {name}? This action
-              cannot be undone.
+              Are you sure you want to delete this account <b>{name}</b>? <br />
+              This action cannot be undone.
             </p>
           </div>
         </div>
@@ -76,7 +79,7 @@ const DeleteAccountModal = ({ id, name }: Props) => {
             No
           </Button>
           <Button
-            className="bg-[#D92D20] border-none rounded-lg font-bold flex-1"
+            className="bg-system-red-2 border-none rounded-lg font-bold flex-1 hover:bg-system-red-2/90"
             onClick={handleDeleteAccount}
           >
             Yes
