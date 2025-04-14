@@ -1,14 +1,12 @@
 "use client";
-import React from "react";
-import UserIcon from "@public/assets/icons/user.svg";
-import { Button } from "@/components/ui/button";
-import CreateAccountModal from "@/components/modals/create-account-modal";
-import { useQuery } from "@tanstack/react-query";
-import { getAllAccounts } from "@/lib/actions/account.actions";
 import Loader from "@/components/globals/loader";
+import CreateAccountModal from "@/components/modals/create-account-modal";
 import DashboardTable from "@/components/tables/dashboard-table";
 import { columns } from "@/components/tables/dashboard-table/columns";
+import { getAllAccounts } from "@/lib/actions/account.actions";
 import { TAccount } from "@/types";
+import UserIcon from "@public/assets/icons/user.svg";
+import { useQuery } from "@tanstack/react-query";
 const HomePageMain = () => {
   const { data, isLoading } = useQuery({
     queryKey: ["accounts"],

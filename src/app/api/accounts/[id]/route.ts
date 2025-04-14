@@ -1,5 +1,4 @@
 import { deleteAccount, updateAccount } from "@/lib/actions/account.actions";
-import db from "@/lib/db";
 import { accountSchema } from "@/lib/validation";
 import { NextResponse } from "next/server";
 

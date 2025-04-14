@@ -1,9 +1,7 @@
 "use client";
-import React from "react";
-import SideNavIcon from "./side-nav-icon";
 import { cn } from "@/lib/utils";
 import { usePathname, useRouter } from "next/navigation";
-import Link from "next/link";
+import SideNavIcon from "./side-nav-icon";
 
 type Props = {
   label: string;
