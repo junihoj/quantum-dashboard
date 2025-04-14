@@ -2,9 +2,7 @@ import React from "react";
 import HomeHeader from "./_components/home-header";
 import HomePageMain from "./_components/home-page-main";
 
-type Props = {};
-
-const DashboardHomePage = (props: Props) => {
+const DashboardHomePage = () => {
   return (
     <div className="flex-1 h-full overflow-hidden">
       <HomeHeader />

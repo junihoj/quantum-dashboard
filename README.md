@@ -3,8 +3,9 @@
 1. 🤖 [Introduction](#introduction)
 2. 💡 [Developer Note](#developer-note)
 3. ⚙️ [Tech Stack](#tech-stack)
-4. 🤸 [Quick Start](#quick-start)
-5. 🧪 [API Endpoints](#api-endpoints)
+4. 🔋 [Features](#features)
+5. 🤸 [Quick Start](#quick-start)
+6. 🧪 [API Endpoints](#api-endpoints)
 
 ## <a name="introduction">🤖 Introduction</a>
 
@@ -42,6 +43,19 @@ learn more about server actions [Nextjs server actions](https://nextjs.org/docs/
 
 ---
 
+## <a name="features">🔋 Features</a>
+
+- Build RESTful API endpoints with nextjs:
+  - `POST /api/accounts` – Create account
+  - `PUT /api/accounts/:id` – Update account
+  - `DELETE /api/accounts/:id` – Delete account
+- Validate requests using **Zod**
+- Use **Prisma** for database access and schema modeling
+- make sure you have postgres installed locally or you have access to an online postgres database
+- Implement UI based on [Figma design](<https://www.figma.com/proto/hOLRAo0MWOShYpKVRCKVaA/Design--2-(Copy)?node-id=1-606&p=f&t=CAnfVeGkOkzSdzko-0&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1>)
+
+---
+
 ## <a name="quick-start">🤸 Quick Start</a>
 
 Follow these steps to set up the project locally on your machine.
@@ -53,14 +67,10 @@ Make sure you have the following installed on your machine:
 - [Git](https://git-scm.com/)
 - [Node.js](https://nodejs.org/en)
 - [npm](https://www.npmjs.com/) (Node Package Manager)
-- Build RESTful API endpoints with nextjs:
-  - `POST /api/accounts` – Create account
-  - `PUT /api/accounts/:id` – Update account
-  - `DELETE /api/accounts/:id` – Delete account
-- Validate requests using **Zod**
-- Use **Prisma** for database access and schema modeling
-- make sure you have postgres installed locally or you have access to an online postgres database
-- Implement UI based on [Figma design](<https://www.figma.com/proto/hOLRAo0MWOShYpKVRCKVaA/Design--2-(Copy)?node-id=1-606&p=f&t=CAnfVeGkOkzSdzko-0&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1>)
+
+**_Note_**
+
+- [postgres](https://www.postgresql.org/download/) make sure you have postgres installed locally or you have access to an online postgres database
 
 **Cloning the Repository**
 
