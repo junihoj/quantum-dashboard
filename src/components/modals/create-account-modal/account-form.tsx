@@ -110,8 +110,12 @@ const AccountForm = ({
       );
     }
   };
-  // console.log(form.formState.errors);
 
+  const watchedField = form.watch(["firstName", "lastName", "occupation"]);
+  // console.log(form.formState.errors);
+  const isDisabled = () => {
+    return watchedField.some((field) => field == undefined);
+  };
   return (
     <Form {...form}>
       <form
@@ -119,10 +123,10 @@ const AccountForm = ({
         className="flex flex-col bg-white gap-y-10 overflow-y-auto px-8 py-6"
       >
         {/* <CustomToast id="id" message="" success={false} /> */}
-        {preview ? (
+        {preview || avatar ? (
           <div className="flex justify-center relative">
             <Image
-              src={preview}
+              src={preview != "" ? preview : (avatar as string)}
               alt="preview"
               width={100}
               height={100}
@@ -187,6 +191,7 @@ const AccountForm = ({
                 selectItems={occupationSelectItems}
                 value={field.value}
                 onValueChange={field.onChange}
+                placeholder="Select Occupation"
               />
             )}
             schema={AccountFormSchema}
@@ -195,12 +200,7 @@ const AccountForm = ({
         <Button
           className="py-[17.5px] bodyText-regular text-base"
           variant="fill"
-          //   disabled={
-          //     // !form.getValues("avatar") ||
-          //     !form.getValues("firstName") ||
-          //     !form.getValues("lastName") ||
-          //     !form.getValues("occupation")
-          //   }
+          disabled={isDisabled()}
           type="submit"
         >
           Save

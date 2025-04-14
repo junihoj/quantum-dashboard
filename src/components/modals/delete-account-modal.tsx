@@ -49,13 +49,13 @@ const DeleteAccountModal = ({ id, name }: Props) => {
     <Dialog open={open}>
       <Button
         variant="destructive"
-        className="cursor-pointer w-fit"
+        className="cursor-pointer w-fit max-[600px]:p-1 max-[600px]:text-xs"
         onClick={() => setOpen(true)}
       >
         delete
       </Button>
       <DialogContent className="flex flex-col gap-y-8 p-6" showClose={false}>
-        <DialogTitle className="sr-only">Delete Appointment Modal</DialogTitle>
+        <DialogTitle className="sr-only">Delete account Modal</DialogTitle>
 
         <div className="flex flex-col gap-y-4 items-center">
           <CircleAlert className="w-8 h-8 stroke-system-red-2" />

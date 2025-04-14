@@ -4,6 +4,7 @@ import {
   Dialog,
   DialogClose,
   DialogContent,
+  DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
@@ -30,7 +31,10 @@ const CreateAccountModal = ({ data, className, buttonText }: Props) => {
         }}
         className={cn("cursor-pointer", className)}
       >
-        <Button className="bodyText-regular max-[600]:text-xs" variant="fill">
+        <Button
+          className="bodyText-regular max-[600px]:text-xs max-[600px]:p-2"
+          variant="fill"
+        >
           {buttonText ?? "Add an account"}
         </Button>
       </DialogTrigger>
@@ -39,6 +43,7 @@ const CreateAccountModal = ({ data, className, buttonText }: Props) => {
         showClose={false}
         className="py-4 px-0 max-h-[90dvh] h-[90dvh] overflow-hidden"
       >
+        <DialogTitle className="sr-only">create account modal</DialogTitle>
         <div className="flex flex-col gap-y-2 h-full overflow-hidden bg-system-background">
           <header className="flex flex-col gap-y-4 py-6 bg-white px-8">
             <h1 className="bodyText-Bold text-black">Add an account holder</h1>

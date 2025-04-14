@@ -8,9 +8,10 @@ type Props = {
   icon: string;
   path: string;
   setOpen?: (val: boolean) => void;
+  className?: string;
 };
 
-const SupportNavItem = ({ icon, label, path, setOpen }: Props) => {
+const SupportNavItem = ({ icon, label, path, setOpen, className }: Props) => {
   const pathname = usePathname();
   const isActive = pathname == path;
   const router = useRouter();
@@ -22,7 +23,8 @@ const SupportNavItem = ({ icon, label, path, setOpen }: Props) => {
         "bodyText-regular hover:text-white",
         {
           "bg-system-primary text-white": isActive,
-        }
+        },
+        className
       )}
       onClick={() => {
         if (path) {

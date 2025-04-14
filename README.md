@@ -3,11 +3,8 @@
 1. 🤖 [Introduction](#introduction)
 2. 💡 [Developer Note](#developer-note)
 3. ⚙️ [Tech Stack](#tech-stack)
-4. 📁 [Project Structure](#project-structure)
-5. 🤸 [Quick Start](#quick-start)
-6. 🔗 [Assets & Snippets](#links)
-7. 🧪 [API Endpoints](#api-endpoints)
-8. 🚀 [More](#more)
+4. 🤸 [Quick Start](#quick-start)
+5. 🧪 [API Endpoints](#api-endpoints)
 
 ## <a name="introduction">🤖 Introduction</a>
 
@@ -26,6 +23,10 @@ const result = await pool.query(
 );
 ```
 
+using server action is better of doing this than creating an api route in this use case
+
+learn more about server actions [Nextjs server actions](https://nextjs.org/docs/app/building-your-application/data-fetching/server-actions-and-mutations#convention)
+
 ---
 
 ## <a name="tech-stack">⚙️ Tech Stack</a>
@@ -34,7 +35,9 @@ const result = await pool.query(
 - **React 19**
 - **PostgreSQL**
 - **Prisma** (ORM)
-- **Zod** (for request validation)
+- **Zod** (for request and form validation validation)
+- **react-query(@tanstack/react-query) and axios** for making query to the backend
+- **react-table(@tanstack/react-table)** for displaying accounts in table format
 - **Tailwind CSS** (for styling, if UI is included)
 
 ---
@@ -91,10 +94,8 @@ Replace the placeholder value for the DATABASE_URL with your actual **(POSTGRES 
 npx prisma db push
 ```
 
-**OR**
-
 ```bash
-npx prisma migrate dev --name init
+npx prisma generate
 ```
 
 **Run the App**
@@ -116,12 +117,15 @@ npm run dev
 
 ### ✅ Payload Example
 
+**NOTE**
+This avatar path should be a base64 text
+
 ```json
 {
   "firstName": "John",
   "lastName": "Doe",
   "occupation": "ENGINEER",
-  "avatar": "base64;image...."
+  "avatar": ""
 }
 ```
 

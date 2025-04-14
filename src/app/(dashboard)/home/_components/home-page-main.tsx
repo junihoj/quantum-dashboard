@@ -18,8 +18,10 @@ const HomePageMain = () => {
   });
   return (
     <div className="h-full overflow-auto">
-      <div className="flex justify-between px-10 border-b border-system-grey-6 py-6 items-center">
-        <h1 className=" bodyText-Bold text-black ">Dashboard</h1>
+      <div className="flex justify-between px-10 border-b border-system-grey-6 py-6 items-center max-[600px]:px-4">
+        <h1 className=" bodyText-Bold text-black max-[600px]:text-base">
+          Dashboard
+        </h1>
         {data && data?.length && <CreateAccountModal />}
       </div>
       <div>
