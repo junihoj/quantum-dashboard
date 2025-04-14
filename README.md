@@ -53,6 +53,7 @@ learn more about server actions [Nextjs server actions](https://nextjs.org/docs/
 - Use **Prisma** for database access and schema modeling
 - make sure you have postgres installed locally or you have access to an online postgres database
 - Implement UI based on [Figma design](<https://www.figma.com/proto/hOLRAo0MWOShYpKVRCKVaA/Design--2-(Copy)?node-id=1-606&p=f&t=CAnfVeGkOkzSdzko-0&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1>)
+- Github action CI to run build on push to main
 
 ---
 
